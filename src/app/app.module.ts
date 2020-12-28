@@ -5,6 +5,7 @@ import { AppComponent } from './app.component';
 import { FooterComponent } from './components/shared/footer/footer.component';
 import { HeaderComponent } from './components/shared/header/header.component';
 import { BodyComponent } from './components/shared/body/body.component';
+import { HttpClientModule } from '@angular/common/http';
 
 
 import {APP_ROUTING} from './app.routes';
@@ -19,7 +20,8 @@ import {APP_ROUTING} from './app.routes';
   ],
   imports: [
     APP_ROUTING,
-    BrowserModule
+    BrowserModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { TorreUserService } from '../../../services/torre-user.service';
+
 
 @Component({
   selector: 'app-body',
@@ -7,9 +9,23 @@ import { Component, OnInit } from '@angular/core';
 })
 export class BodyComponent implements OnInit {
 
-  constructor() { }
+  usuario: any;
+  constructor(private torreUserService: TorreUserService) { }
 
   ngOnInit(): void {
+  }
+
+  userLoad(): void {
+    this.torreUserService.getUserTorre("asbraxgo").subscribe(response => {
+      this.usuario = response.result;
+    }, err => {
+      if (err.status === 400 || err.status === 401) {
+        alert( 'el usuario no existe!');
+      } else {
+        alert( 'Error en la carga del usuario');
+      }
+    }
+      );
   }
 
 }
